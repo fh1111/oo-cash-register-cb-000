@@ -40,7 +40,7 @@ class CashRegister
     @total -= (@previous_price * @previous_qty)
     x=0
     while  x < @previous_qty
-      @allitems.pop(item)
+      @allitems.pop(@previous_item)
       x += 1
     end
   end
