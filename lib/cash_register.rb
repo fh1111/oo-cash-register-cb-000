@@ -1,6 +1,6 @@
 class CashRegister
 
-  attr_accessor :total, :discount, :allitems
+  attr_accessor :total, :discount, :allitems, :previous_item, :previous_price, :previous_qty
 
 
 
@@ -11,6 +11,10 @@ class CashRegister
   end
 
   def add_item(item,price,qty = 1)
+    @previous_price = price
+    @previous_item = item
+    @previous_qty = qty
+
     @total += (price * qty)
     x=0
     while  x < qty
@@ -32,5 +36,13 @@ class CashRegister
     @allitems
   end
 
+  def void_last_transaction
+    @total -= (@previous_price * @previous_qty)
+    x=0
+    while  x < @previous_qty
+      @allitems.pop(item)
+      x += 1
+    end
+  end
 
 end
