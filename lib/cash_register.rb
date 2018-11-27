@@ -13,7 +13,7 @@ class CashRegister
   def add_item(item,price,qty = 1)
     @total += (price * qty)
     x=0
-    while  x <= qty
+    while  x < qty
       @allitems.push(item)
       x += 1
     end
